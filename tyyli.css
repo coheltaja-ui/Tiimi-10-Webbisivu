@@ -73,4 +73,12 @@ padding-top: 7rem;
   background-color: rgba(0, 0, 0, 0.5) !important;
 
 
+.navbar-logo{
+padding-left: 2%;
+}
+.footer-teksti-1{
+  color: #86C232
+}
+.footer-teksti-2{
+  color: #FFFDF7;
 }
