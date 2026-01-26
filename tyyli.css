@@ -7,9 +7,12 @@ body {
 .bg-body-tertiary {
     background-color: rgba(213, 204, 204, 0.2) !important;
       text-align: center;
+        padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 .navbar-nav {
   margin: 0 auto;
+
 }
 .navbar-nav .nav-item {
   padding: 0% 2.5rem;
@@ -20,9 +23,76 @@ body {
 .navbar .nav-link {
   color: #FFFDF7;
 }
-.logo-teksti{
+.logo-teksti {
+  margin-left: 20%;
+  letter-spacing: 0.15em;
+  font-size: 36px;
     color: #86C232
 }
+.navbar-logo {
+margin-left: 15%;
+
+}
+.ylin-kuva {
+  height: 100vh;
+  background-image: url("kuvat/ravintola2.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.logo-container{
+margin-left: 2%;
+}
+.sisalto-tesksti{
+  padding-left: 35%;
+  font-size: 24px;
+  text-align: left;    
+  color: #FFFDF7;
+  font-family: open-sans;
+   -webkit-text-stroke: 0.12px #000;
+}
+.sotsikko{
+  font-size: 32px;
+   padding-left: 35%;
+   text-align: left;
+  color: #FFFDF7;
+  font-family: open-sans;
+     -webkit-text-stroke: 0.12px #000;
+}
+.tekstilaatikko{
+  padding-left: 18%;
+padding-top: 7rem; 
+
+}
+.tekstilaatikko2{
+  padding-right: 10%;
+padding-top: 7rem;
+
+}
+.tekstiboxi{ 
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+  .safkaa{
+    display: block; 
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  }
+  .annos-teksti{
+    text-align: center;
+    font-size: 24px;
+    color: #86C232}
+@media (max-width: 768px) {
+  .tekstilaatikko {
+    padding-left: 1%;
+  }
+}
+@media (max-width: 768px) {
+  .tekstilaatikko2 {
+    padding-left: 1%;
+  }
+}
+
 .navbar-logo{
 padding-left: 2%;
 }
