@@ -71,7 +71,27 @@ padding-top: 7rem;
 }
 .tekstiboxi{ 
   background-color: rgba(0, 0, 0, 0.5) !important;
-
+}
+  .safkaa{
+    display: block; 
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  }
+  .annos-teksti{
+    text-align: center;
+    font-size: 24px;
+    color: #86C232}
+@media (max-width: 768px) {
+  .tekstilaatikko {
+    padding-left: 1%;
+  }
+}
+@media (max-width: 768px) {
+  .tekstilaatikko2 {
+    padding-left: 1%;
+  }
+}
 
 .navbar-logo{
 padding-left: 2%;
