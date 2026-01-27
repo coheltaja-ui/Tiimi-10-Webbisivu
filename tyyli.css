@@ -96,6 +96,9 @@ padding-top: 7rem;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10%;
+  max-height: 360px;
+  width: 100%;
+  object-fit: cover;
   }
   .annos-teksti{
      font-family: open-sans;
@@ -161,3 +164,6 @@ padding-left: 2%;
   width: 1512px;
   height: 756px;
 }
+.kirjoita{
+  margin-left: 5%;
+} 
