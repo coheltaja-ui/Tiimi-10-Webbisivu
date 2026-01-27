@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etusivu</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="tyyli.css">
+</head>
+
+<body>
+
+    <div class="etusivu-taustakuva">
+        <div class="container-fluid">
+
+            <header class="row">
+                <nav class="col-md-12 navbar navbar-expand-lg bg-body-tertiary">
+
+                    <div class="logocontainer d-flex flex-column align-items-center">
+                        <a class="navbar-logo" href="index.html">
+                            <img src="kuvat/planttilogo.jpg" alt="Plantti logo" height="150">
+                        </a>
+                    </div>
+
+                    <button class="navbar-toggler" type="button" 
+                            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="menu.html">Menu</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="yhteystiedot.html">Yhteystiedot</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Varaukset</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">På Svenska</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </nav>
+            </header>
+
+            <div>
+                <article class="col-md-12 artikkeli-teksti">
+                    <h2>Luonnollisesti herkullista</h2>
+
+                    <h2>Ravintola avoinna tänään:
+                        <pre>               16–23</pre></h2>
+
+                    <h2>Tervetuloa! <a href="Varaukset.html">Varaa pöytä</a></h2>
+                </article>
+            </div>
+
+        </div>
+    </div>
+
+    <main class="row">
+
+        <div class="col-md-6 ravintolakuva">
+            <img src="kuvat/planttiravintola.svg" alt="kuva ravintolasta">
+        </div>
+
+        <article class="col-md-6 ravintola-teksti">
+            <h1>Ravintola plantti</h1>
+
+            <p>Tervetuloa Planttiin – paikkaan, jossa kasvipohjainen ruoka ja hyvä fiilis kohtaavat.<br><br>
+                Plantti syntyi vuonna 2026, kun kolme ystävystä halusi luoda ravintolan, jossa herkullinen ruoka ja rento tunnelma kulkevat käsi kädessä. 
+                Meille tärkeintä on tarjota makuja, jotka tehdään ilman eläinperäisiä ainesosia ja sesongin parhaista raaka-aineista – mahdollisimman läheltä hankittuna.<br><br>
+                Plantti on enemmän kuin ravintola; se on yhteisö. Haluamme tarjota paikan, jossa jokainen voi syödä hyvin, viihtyä ja inspiroitua.<br><br>
+                Tervetuloa nauttimaan – just sellaisena kuin olet.</p>
+        </article>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
+            crossorigin="anonymous">
+    </script>
+
+    <footer class="bg-body-tertiary text-center mt-5">
+        <div class="container-fluid p-4">
+
+            <div class="row">
+
+                <div class="col-lg-3">
+                    <a class="footer-logo d-flex flex-column align-items-center" href="index.html">
+                        <img src="kuvat/planttilogo.jpg" alt="Plantti logo" height="150">
+                    </a>
+                </div>
+
+                <div class="col-lg-3 mt-4">
+                    <a class="btn">
+                        <img src="kuvat/instagram.svg" alt="instagram logo" height="40">
+                    </a>
+                    <a class="btn footer-some">
+                        <img src="kuvat/facebook.svg" alt="facebook logo" height="40">
+                    </a>
+                </div>
+
+                <div class="col-lg-3 mt-4">
+                    <ul class="list-unstyled">
+                        <li><a href="tel:+358442374825" class="footer-teksti-1">+358 44 2374825</a></li>
+                        <li><a href="mailto:plantti@planttiravintola.fi" class="footer-teksti-1">Plantti@planttiravintola.fi</a></li>
+                        <br>
+                        <li class="footer-teksti-1">Sibeliuksenkatu 1</li>
+                        <li class="footer-teksti-1">13100, Hämeenlinna</li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 mt-4">
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="footer-teksti-2">Evästekäytäntö</a></li>
+                        <li><a href="#" class="footer-teksti-2">Tietosuojaseloste</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>

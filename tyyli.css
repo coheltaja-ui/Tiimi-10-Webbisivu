@@ -113,17 +113,20 @@ padding-left: 2%;
   font-weight:bolder;
   font-size: large;
 }
+
 .artikkeli-teksti {
   color:#86C232;
-  padding-left: 60%;
+  margin-left: 60%;
+  padding-top: 7%;
   text-align: left;
-  padding-top: 15%;
 }
 
 .artikkeli-teksti h2 {
+  color:#86C232;
   font-size: 40px;
   font-family: open-sans;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .artikkeli-teksti pre {
@@ -132,6 +135,41 @@ padding-left: 2%;
 
 .etusivu-taustakuva {
   background-image: url(kuvat/planttietusivubackground.png);
-  width: 1512px;
-  height: 756px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: auto;
+  min-height: 50vh;
 }
+
+main img{
+  height: auto;
+  padding-left: 10%;
+  padding-top: 3%;
+  padding-bottom: 0%;
+  max-width: 100%;
+  height: auto;
+}
+
+.ravintola-teksti{
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 10%;
+}
+
+.ravintola-teksti p{
+  color: #FFFDF7;
+  font-size: 28px;
+  font-family: open-sans;
+  text-align: left;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.ravintola-teksti h1 {
+  color: #FFFDF7;
+  font-size: 60px;
+  font-family: Brush Script MT;
+  text-align: center;
+  margin-right: 20%;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
+}  
