@@ -102,7 +102,17 @@ padding-left: 2%;
 .footer-teksti-2{
   color: #FFFDF7;
 }
-
+.ruokalistateksti{
+  color:#FFFDF7;
+  font-weight: 200;
+}
+.ruokalistavinossa{
+  font-style:italic;
+}
+.ruokalistaotsikko{
+  font-weight:bolder;
+  font-size: large;
+}
 .artikkeli-teksti {
   color:#86C232;
   padding-left: 60%;
