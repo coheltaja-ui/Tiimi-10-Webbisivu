@@ -4,6 +4,14 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+.form-label{
+  font-family: open-sans;
+  color: #FFFDF7
+
+}
+.form-control {
+  max-width: 3  00px;
+}
 .bg-body-tertiary {
     background-color: rgba(46, 44, 44, 0.4) !important;
       text-align: center;
@@ -14,6 +22,12 @@ body {
   margin: 0 auto;
 
 }
+.nav-link:hover {
+  text-decoration: underline;
+}
+.linkki:hover{
+  color: #FFFDF7;
+}
 .navbar-nav .nav-item {
   padding: 0% 2.5rem;
   font-size: 32px;
@@ -23,6 +37,9 @@ body {
 }
 .navbar .nav-link {
   color: #FFFDF7;
+}
+.navbar-toggler {
+  margin-right: 4rem;
 }
 .logo-teksti {
   margin-left: 20%;

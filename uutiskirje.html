@@ -1,4 +1,4 @@
-<!doctype html>
+
 <html lang="fi">
   <head>
     <meta charset="utf-8">
@@ -12,11 +12,7 @@ Yhteystiedot</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="tyyli.css">
-    
-  </head>
-  <body> 
-  <div class="ylin-kuva">
-    <div class="container-fluid">
+<div class="container-fluid">
         <header class="row">
             
 <nav class="col-md-12 navbar navbar-expand-lg bg-body-tertiary navbar-dark">
@@ -49,48 +45,21 @@ Yhteystiedot</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </div>
     </div>
-    <div class="row tekstilaatiot">
-  <div class = "col-md-6 tekstilaatikko justify-content-start mb-3 ">
-     <div class="tekstiboxi">
-    <h1 class = "sotsikko">Ravintola plantti</h1>
-        <p class = "sisalto-tesksti">Sibeliuksenkatu 1, 13100 Hämeenlinna<br>
-+358442374825<br>
-(0,38 € /min+pvm /pmp)<br>
-Plantti@planttiravintola.fi</p>
-</div>
-</div>
-<div class = "col-md-6 tekstilaatikko2 justify-content-start mb-3">
-  <div class="tekstiboxi">
-  <h1 class = "sotsikko">Aukioloajat</h1>
-  <p class = "sisalto-tesksti">Maanantai:Suljettu<br>
-Tiistai:15:00 - 22:00<br>
-Keskiviikko:15:00 - 22:00<br>
-Torstai:15:00 - 22:00<br>
-Perjantai:16:00 - 23:00<br>
-Lauantai:15:00 - 23:00<br>
-Sunnuntai:16:00-20:00</p>
+<form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Nimi</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text"></div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputkello" class="form-label">Kellonaika</label>
+    <input type="kellonaika" class="form-control" id="exampleInputkello">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Email osoite</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
   </div>
   </div>
-  
-
-</div>
-</div>
-    <div>
-      <div class="row ruokakuvat">
-      <div class = "col-md-6 kuvalaatikko1 justify-content-start mb-3 d-flex flex-column align-items-center">
-        <a class="linkki justify-content-start align-items-center" href="varaukset.html">
-        <img src="kuvat/annos1.jpg" alt="Plantti logo" height="360" class="safkaa">
-        <p class = "annos-teksti">Varaa pöytä</p>
-        </a>
-
-      </div>
-      <div class = "col-md-6 kuvalaatikko2 justify-content-start mb-3 d-flex flex-column align-items-center">
-        <a class="linkki justify-content-start align-items-center" href="uutiskirje.html">
-        <img src="kuvat/annos2.jpg" alt="Plantti logo" height="360"  class="safkaa">
-        <p class = "annos-teksti">Tilaa uutiskirje</p>
-        </a>
-
-      </div>
-      </div>
-  </body>
-</html>
+  <button type="submit" class="btn btn-primary">Lähetä</button>
+</form>
+</body> 
