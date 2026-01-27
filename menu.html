@@ -15,15 +15,89 @@ Final HTML Assignment</title>
     
 </head>
 <body>
-
+    <nav class="col-md-12 navbar navbar-expand-lg bg-body-tertiary">
+        <div class="logocontainer d-flex flex-column align-items-center">
+            <a class="navbar-logo" href="#">
+                <img src="kuvat/planttilogo.jpg" alt="Plantti logo" height="150">
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Yhteystiedot</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Varaukset</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Svenska</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container p-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 my-auto ruokalistateksti">
+                <h2>Alkupalat</h2>
+                    <dl>
+                        <dt>Parsa & Merilevä</dt>
+                        <dl>Hiillostettua valkoista parsaa, vegaanista "kaviaaria" merilevästä, sitruunaverbena-vaahtoa ja ruskistettua soijavoita.</dl>
+                        <dl class="ruokalistavinossa">Klassinen parsa saa uuden ulottuvuuden avotulen aromista. Merilevähelmet tuovat suolaisen merellisen elementin, joka sitoo yhteen pähkinäisen voikastikkeen ja raikkaan yrtin.</dl>
+                        <dt>Punajuuri & Ruusu</dt>
+                        <dl>Suolakuoressa paahdettua punajuurta, fermentoitua vadelmaa, savustettua mantelikreemiä ja ruusunlehtivinaigrette.</dl>
+                        <dl class="ruokalistavinossa">Punajuuren makeus tiivistyy suolakuorikypsennyksessä. Hapatettu vadelma leikkaa maanläheisyyttä, ja savustettu manteli tuo annokseen täyteläistä rasvaisuutta. Visuaalisesti upea, rubiininpunainen kokonaisuus.</dl>
+                    </dl>
+            </div>
+            <div class="col-lg-6 my-auto">
+                <img class="img-fluid d-none d-lg-block" src="kuvat/menukuva1.jpg"> 
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 my-auto">
+                <img class="img-fluid d-none d-lg-block" src="kuvat/menukuva2.jpg"> 
+            </div>
+            <div class="col-lg-6 my-auto ruokalistateksti">
+                <h2>Pääruoat</h2>
+                    <dl>
+                        <dt>Kurpitsa & Salvia</dt>
+                        <dl>Kurpitsaconfit, grillattua kuningasvinokasta, rapeaa lehtikaalia, mustaa valkosipulia ja salvia-hollandaise.</dl>
+                        <dl class="ruokalistavinossa">Voimakas ja täyteläinen annos. Kurpitsa on kypsennetty rasvassa (confit) äärimmäisen pehmeäksi. Musta valkosipuli tuo umamista syvyyttä, ja ilmava, täysin kasvipohjainen hollandaise sitoo komponentit yhteen.</dl>
+                        <dt>Kukkakaali & Tryffeli</dt>
+                        <dl>Paahdettua kukkakaalin "sydäntä", kukkakaalikuskusia, belugalinssiragua ja kesätryffeliä.</dl>
+                        <dl class="ruokalistavinossa">Kunnianosoitus yhdelle raaka-aineelle eri muodoissa. Paahdettu kukkakaali tuo pähkinäisyyttä, kun taas linssiragu antaa annokselle ruokaisuutta. Tuore lastuttu tryffeli tekee annoksesta ylellisen.</dl>
+                    </dl>
+            </div> 
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 my-auto ruokalistateksti">
+                <h2>Jälkiruoat</h2>
+                    <dl>
+                        <dt>Tyrni & Lakritsi</dt>
+                        <dl>Tyrnisorbettia, paahdettua valkosuklaanamelakaa (vegaaninen), lakritsimarenkia ja kristallisoitua fenkolia.</dl>
+                        <dl class="ruokalistavinossa">Raikas ja rohkea päätös. Tyrnin kirpeys ja valkosuklaan makeus ovat täydellinen pari. Lakritsi ja fenkoli tuovat jälkiruokaan hienostunutta mausteisuutta ja yllätyksellisyyttä.</dl>
+                        <dt>Suklaa & Kirsikka</dt>
+                        <dl>Tummasuklaa-ganache 70%, fermentoitua kirsikkageeliä, pistaasisientä ja kirsikankukkaliemi.</dl>
+                        <dl class="ruokalistavinossa">Suklaan ystävän unelma. Ganache on intensiivinen ja silkkinen. Fermentointi syventää kirsikan makua viinimäiseksi. Pistaasisieni (sponge cake) tuo annokseen leikkisää ilmavuutta ja väriä.</dl>
+                    </dl>
+            </div>
+            <div class="col-lg-6 my-auto d-none d-lg-block">
+                <img class="img-fluid" src="kuvat/menukuva3.jpg"> 
+            </div>    
+        </div>
+    </div>
 
     <footer class="bg-body-tertiary text-center mt-5">
         <div class="container-fluid p-4">
             <div class="row">
                 <div class="col-lg-3">
                     <a class="footer-logo d-flex flex-column align-items-center" href="#">
-                        <img src="kuvat/Plantti.svg" alt="Plantti logo" height="80">
-                        <h2 class = "logo-teksti">plantti</h2>
+                        <img src="kuvat/planttilogo.jpg" alt="Plantti logo" height="150">
                     </a>
                 </div>
                 <div class="col-lg-3 mt-4">

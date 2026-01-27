@@ -111,3 +111,36 @@ padding-left: 2%;
 .footer-teksti-2{
   color: #FFFDF7;
 }
+.ruokalistateksti{
+  color:#FFFDF7;
+  font-weight: 200;
+}
+.ruokalistavinossa{
+  font-style:italic;
+}
+.ruokalistaotsikko{
+  font-weight:bolder;
+  font-size: large;
+}
+.artikkeli-teksti {
+  color:#86C232;
+  padding-left: 60%;
+  text-align: left;
+  padding-top: 15%;
+}
+
+.artikkeli-teksti h2 {
+  font-size: 40px;
+  font-family: open-sans;
+  margin-bottom: 60px;
+}
+
+.artikkeli-teksti pre {
+  font-family: open-sans;
+}
+
+.etusivu-taustakuva {
+  background-image: url(kuvat/planttietusivubackground.png);
+  width: 1512px;
+  height: 756px;
+}
