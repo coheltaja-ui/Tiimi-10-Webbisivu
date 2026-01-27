@@ -116,8 +116,8 @@ padding-left: 2%;
 
 .artikkeli-teksti {
   color:#86C232;
-  margin-left: 60%;
-  padding-top: 7%;
+  margin-left: 50%;
+  margin-top: 6%;
   text-align: left;
 }
 
@@ -145,10 +145,9 @@ padding-left: 2%;
 main img{
   height: auto;
   padding-left: 10%;
-  padding-top: 3%;
-  padding-bottom: 0%;
+  padding-top: 5%;
+  padding-bottom: 3%;
   max-width: 100%;
-  height: auto;
 }
 
 .ravintola-teksti{
