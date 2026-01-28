@@ -5,7 +5,7 @@ body {
   background-position: center;
 }
 .bg-body-tertiary {
-    background-color: rgba(213, 204, 204, 0.2) !important;
+    background-color: rgba(47, 44, 44, 0.4) !important;
       text-align: center;
         padding-top: 0.1rem;
   padding-bottom: 0.1rem;
@@ -196,3 +196,14 @@ main img{
   margin-right: 15%;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
 }  
+.kirjoita{
+  margin-left: 5%;
+  max-width: 400px; 
+} 
+.navbar-toggler {
+  margin-right: 10%; 
+}
+.kirjoita .form-label {
+font-family: open-sans;
+color: #FFFDF7;
+}
