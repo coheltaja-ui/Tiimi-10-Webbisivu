@@ -208,3 +208,12 @@ main img{
 font-family: open-sans;
 color: #FFFDF7;
 }
+.nav-link:hover {
+  text-decoration: underline;
+}
+.linkki:hover{
+  color: #FFFDF7;
+}
+.navbar-toggler {
+  margin-right: 4rem;
+}
