@@ -3,6 +3,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  overflow-x: hidden;
 }
 .bg-body-tertiary {
     background-color: rgba(47, 44, 44, 0.4) !important;
@@ -143,14 +144,20 @@ padding-left: 2%;
 }
 .artikkeli-teksti {
   color:#86C232;
-  margin-left: 60%;
-  margin-top: 8%;
-  text-align: left;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24vh;
+  margin-left: 25%;
+  position: relative;
+  z-index: 1;
 }
 
 .artikkeli-teksti h2 {
   color:#86C232;
-  font-size: 40px;
+  font-size: 46px;
   font-family: open-sans;
   margin-bottom: 40px;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
@@ -160,27 +167,55 @@ padding-left: 2%;
   font-family: open-sans;
 }
 
+@media (max-width: 768px) {
+  .artikkeli-teksti {
+    width: calc(100% - 10%);
+    margin-left: 5%;
+    margin-top: 32vh;
+    font-size: 24px;
+  }
+  
+  .artikkeli-teksti h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+  
+  .artikkeli-teksti pre {
+    margin: 5px;
+  }
+}
+
 .etusivu-taustakuva {
-  background-image: url(kuvat/planttietusivubackground.png);
+  background-image: url(kuvat/planttietusivubackground2.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: auto;
-  min-height: 50vh;
+  position: relative;
+  height: auto;
+  min-height: 65vh;
+}
+ 
+.ravintolakuva {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-main img{
-  height: auto;
-  padding-left: 10%;
-  padding-top: 5%;
+.ravintolakuva img{
+  display: block;
+  margin: auto;
+  padding-top: 3%;
   padding-bottom: 3%;
-  max-width: 100%;
+  max-width: 90%;
+  height: auto;
 }
 
 .ravintola-teksti{
-  padding-top: 5%;
   padding-left: 5%;
-  padding-right: 10%;
+  padding-right: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .ravintola-teksti p{
@@ -196,7 +231,6 @@ main img{
   font-size: 60px;
   font-family: Brush Script MT;
   text-align: center;
-  margin-right: 15%;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
 }  
 .kirjoita{
