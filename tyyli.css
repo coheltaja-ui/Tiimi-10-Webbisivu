@@ -102,18 +102,41 @@ padding-left: 2%;
 .footer-teksti-2{
   color: #FFFDF7;
 }
+.ruokalistat{
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
 .ruokalistateksti{
   color:#FFFDF7;
   font-weight: 200;
+}
+.ruokalistateksti h2{
+  font-family: Brush Script MT;
+  font-size:  50px;
 }
 .ruokalistavinossa{
   font-style:italic;
 }
 .ruokalistaotsikko{
-  font-weight:bolder;
+  font-weight:bold;
   font-size: large;
 }
-
+.ruokalista-iso-otsikko{
+  padding-top: 100px;
+  margin-bottom: 50px;
+  text-shadow:2px 2px 4px #222629;
+  color: #FFFDF7;
+  font-family: Brush Script MT;
+  font-size: 100px;
+}
+.ruokalistakuva {
+  min-height: 50vh;
+  background-image: url("kuvat/menutausta.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .artikkeli-teksti {
   color:#86C232;
   margin-left: 50%;
