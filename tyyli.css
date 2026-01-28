@@ -34,7 +34,7 @@ margin-left: 15%;
 
 }
 .ylin-kuva {
-  height: 100vh;
+  min-height: 100vh;
   background-image: url("kuvat/ravintola2.webp");
   background-size: cover;
   background-position: center;
@@ -73,6 +73,7 @@ padding-top: 7rem;
   background-color: rgba(0, 0, 0, 0.5) !important;
 }
   .safkaa{
+    width: 80%;
     display: block; 
   margin-left: auto;
   margin-right: auto;
