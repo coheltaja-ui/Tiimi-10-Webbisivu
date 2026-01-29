@@ -229,8 +229,10 @@ padding-left: 2%;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
 }  
 .kirjoita{
-  margin-left: 5%;
-  max-width: 400px; 
+  margin-top: 1rem;
+  max-width: 600px; 
+  width: 100%;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
 } 
 .navbar-toggler {
   margin-right: 10%; 
@@ -247,4 +249,19 @@ color: #FFFDF7;
 }
 .navbar-toggler {
   margin-right: 4rem;
+}
+
+.kirjoita h1 {
+  color: #FFFDF7;
+  font-family: open-sans;
+  font-size: 48px;
+  padding-bottom: 2rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.varaus-kuva {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-top: 2rem;
 }
