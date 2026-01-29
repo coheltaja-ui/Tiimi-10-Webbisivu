@@ -20,6 +20,7 @@ body {
   font-size: 32px;
   font-weight: 400;
   font-family: open-sans;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 .navbar .nav-link {
   color: #FFFDF7;
@@ -147,19 +148,15 @@ padding-left: 2%;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-top: 24vh;
   margin-left: 25%;
-  position: relative;
-  z-index: 1;
 }
 
 .artikkeli-teksti h2 {
   color:#86C232;
   font-size: 46px;
   font-family: open-sans;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
@@ -177,7 +174,7 @@ padding-left: 2%;
   
   .artikkeli-teksti h2 {
     font-size: 36px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
   }
   
   .artikkeli-teksti pre {
@@ -189,8 +186,6 @@ padding-left: 2%;
   background-image: url(kuvat/planttietusivubackground2.png);
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
   height: auto;
   min-height: 65vh;
 }
