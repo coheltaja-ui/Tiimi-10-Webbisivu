@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='fi'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Menun hallinta</title>
+</head>
+<body>
+
+<script>
+    function lahetaMenu(lomake){
+        var menu = new Object();
+        menu.kategoria_id = lomake.kategoria_id.value;
+        menu.annos = lomake.annos.value;
+        menu.aineet = lomake.aineet.value;
+        menu.kuvaus = lomake.kuvaus.value;
+        menu.aktiivinen = lomake.aktiivinen.checked ? 1 : 0;
+        var jsonMenu = JSON.stringify(menu);
+        
+        xmlhttp = new XMLHttpRequest();
+ //       xmlhttp.onreadystatechange = function() {
+ //           if (this.readyState == 4 && this.status == 200) {
+ //               lueMenut();
+ //           }
+ //       };
+        xmlhttp.open("POST", "./luomenu.php", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send("menu=" + jsonMenu);   
+    }
+</script>
+
+<h2>Menun hallinta</h2>
+
+<form id='menulomake'>
+    <input type='hidden' name='id' id='menuId' value=''>
+    
+     <label for="kategoria_id">Ateria:</label>
+        <select name="kategoria_id" id="kategoria_id">
+            <option value="1">Alkupala</option>
+            <option value="2">Pääruoka</option>
+            <option value="3">Jälkiruoka</option>
+        </select> <br><br>
+    Annos: <input type='text' name='annos' value='' placeholder='Syötä annos...'><br><br>
+    Aineet: <input type='text' name='aineet' value='' placeholder='Syötä aineet...'><br><br>
+    Kuvaus: <input type='text' name='kuvaus' value='' placeholder='Syötä kuvaus...'><br><br>
+    Aktiivinen: <input type='checkbox' name='aktiivinen'><br><br>
+    
+    <input type='button' id='btn-lisaa' value='Lisää uusi' onclick='lahetaMenu(this.form);'>
+</form>
+
+</body>
+</html>
