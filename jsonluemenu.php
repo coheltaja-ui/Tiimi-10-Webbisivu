@@ -13,6 +13,7 @@ $lista = [];
 while ($rivi=mysqli_fetch_object($tulos)){
     $kategoriat=new class{};
     $kategoriat->id=$rivi->id;
+    $kategoriat->kategoria_id=$rivi->kategoria_id;
     $kategoriat->annos=$rivi->annos;
     $kategoriat->aineet=$rivi->aineet;
     $kategoriat->kuvaus=$rivi->kuvaus;
