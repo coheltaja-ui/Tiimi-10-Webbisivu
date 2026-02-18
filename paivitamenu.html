@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='fi'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Menun hallinta</title>
+</head>
+<body>
+    
+ <h2>Päivitä annos</h2>
+
+  <form action="paivita.php" method="post">
+
+    <input type='hidden' name='id' id='menuId' value=''>
+
+     <label for="kategoria_id">Ateria:</label>
+        <select name="kategoria_id" id="kategoria_id">
+            <option value="1">Alkupala</option>
+            <option value="2">Pääruoka</option>
+            <option value="3">Jälkiruoka</option>
+        </select> <br><br>
+    Annos: <input type='text' name='annos' value='' placeholder='Syötä annos...'><br><br>
+    Aineet: <input type='text' name='aineet' value='' placeholder='Syötä aineet...'><br><br>
+    Kuvaus: <input type='text' name='kuvaus' value='' placeholder='Syötä kuvaus...'><br><br>
+    Aktiivinen: <input type='checkbox' name='aktiivinen'><br><br>
+
+    <button type="submit">Tallenna muutokset</button>
+  </form>
+
+    <p><a href="./luemenu.html">Peruuta ja palaa listaan</a></p>
+</body>
+</html>
