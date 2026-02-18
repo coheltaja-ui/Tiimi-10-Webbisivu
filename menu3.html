@@ -71,6 +71,21 @@
                         groupedData[catId].push(item);
                     });
 
+                    const vastaus = await fetch('./kuvaJutut/kuvalueaktiiviset.php'); 
+                    const kuvadata = await vastaus.json();
+
+                    //ryhmittelee datan kategorian mukaan (int 1-3 alkupala, pääruoka, jälkiruoka)
+                    const groupedkuvaData = {};
+                    
+                    kuvadata.forEach(item => {
+                        const kuvaId = item.kategoria_id;
+                        if (!groupedkuvaData[kuvaId]) {
+                            groupedkuvaData[kuvaId] = [];
+                        }
+                        groupedkuvaData[kuvaId].push(item);
+                    });
+
+
                     // generoi html sivun miinus headeri ja footeri jotka erikseen
                     const container = document.getElementById('menu-container');
                     container.innerHTML = ``;
@@ -78,7 +93,7 @@
                     //looppaa categorioiden läpi
                     for (const catId in groupedData) {
                         const items = groupedData[catId];
-
+                        const kuvat = groupedkuvaData[catId];
                         //luo otsikon kategorian mukaan
                         
                         let html = `<div class="row justify-content-center">`;
@@ -86,9 +101,9 @@
 
                         
                             //vaihtaa kuvan puolta kategorian mukaan
-                        if (catId == 1 || catId == 3) {
+                        if (catId == 2) {
                         html += `<div class="col-lg-6 my-auto">`
-                        html += `<img class="img-fluid d-none d-lg-block" src="kuvat/menukuva${catId}.jpg" alt="Herkullinen kuva alkupaloista"> 
+                        html += `<img class="img-fluid d-none d-lg-block" src="${kuvat[0].kuvapolku}" alt="${kuvat[0].altteksti}"> 
                         </div>`
                         }
                         //printtaa annokset
@@ -111,10 +126,10 @@
                                 </ul>
                             `;
                         });
-                        if (catId == 2) {
+                        if (catId == 1 || catId == 3) {
                         html += `</div>
                         <div class="col-lg-6 my-auto">
-                        <img class="img-fluid d-none d-lg-block" src="kuvat/menukuva${catId}.jpg" alt="Herkullinen kuva alkupaloista"> 
+                        <img class="img-fluid d-none d-lg-block" src="${kuvat[0].kuvapolku}" alt="${kuvat[0].altteksti}"> 
                         </div>`
                         }
                         html += `</div></div></div>`;
