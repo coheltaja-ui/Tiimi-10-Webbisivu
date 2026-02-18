@@ -1,13 +1,15 @@
 <?php
-//http:localhost:81/Lopullinen/jsonlue.php
-mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
+$initials = parse_ini_file("../.ht.asetukset.ini");
 try{
-    $yhteys=mysqli_connect("db", "root", "password", "plantti");
+      $initials=parse_ini_file("../.ht.asetukset.ini");
+    $yhteys=mysqli_connect($initials["databaseserver"], $initials["username"], $initials["password"], $initials["database"]);
+    mysqli_set_charset($yhteys, "utf8mb4");
 }
 catch(Exception $e){
     print "Yhteysvirhe";
     exit;
 }
+
 $tulos=mysqli_query($yhteys, "select * from kuvat where aktiivinen=1");
 $lista = [];
 while ($rivi=mysqli_fetch_object($tulos)){

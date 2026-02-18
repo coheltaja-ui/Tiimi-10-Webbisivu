@@ -1,9 +1,9 @@
 <?php
 
-$initials = parse_ini_file("./.ht.asetukset.ini");
+$initials = parse_ini_file("../.ht.asetukset.ini");
 
 try{
-    $initials=parse_ini_file("./.ht.asetukset.ini");
+    $initials=parse_ini_file("../.ht.asetukset.ini");
     $yhteys=mysqli_connect($initials["databaseserver"], $initials["username"], $initials["password"], $initials["database"]);
     mysqli_set_charset($yhteys, "utf8mb4");
 }
@@ -12,15 +12,16 @@ catch(Exception $e){
     exit;
 }
 
+
 $virhe = '';
 $info  = '';
 
 if (isset($_GET['delete'])) {
     $del_id = (int)$_GET['delete'];
     if ($del_id > 0) {
-        mysqli_query($yhteys, "DELETE FROM menu_items WHERE id = $del_id");
+        mysqli_query($yhteys, "DELETE FROM kuvat WHERE id = $del_id");
     }
-    header('Location: crudlomake.php'); exit;
+    header('Location: kuvaCrud2.php'); exit;
 }
 
 // MUOKKAA
@@ -28,7 +29,7 @@ $edit = null;
 if (isset($_POST['action']) && $_POST['action'] === 'edit') {
     $eid = (int)($_POST['id'] ?? 0);
     if ($eid > 0) {
-        $res = mysqli_query($yhteys, "SELECT * FROM menu_items WHERE id=$eid");
+        $res = mysqli_query($yhteys, "SELECT * FROM kuvat WHERE id=$eid");
         $edit = mysqli_fetch_assoc($res);
         if (!$edit) { $virhe = 'Annettua ID:tä ei löytynyt.'; }
     } else {
@@ -39,7 +40,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'edit') {
 if (!$edit && isset($_GET['edit'])) {
     $eid = (int)$_GET['edit'];
     if ($eid>0) {
-        $res = mysqli_query($yhteys, "SELECT * FROM menu_items WHERE id=$eid");
+        $res = mysqli_query($yhteys, "SELECT * FROM kuvat WHERE id=$eid");
         $edit = mysqli_fetch_assoc($res);
         if (!$edit) { $virhe = 'Annettua ID:tä ei löytynyt.'; }
     }
@@ -49,41 +50,40 @@ if (!$edit && isset($_GET['edit'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ( !isset($_POST['action']) || $_POST['action'] === 'save')) {
     $id     = (int)($_POST['id'] ?? 0);
     $kat    = (int)($_POST['kategoria_id'] ?? 0);
-    $annos  = $_POST['annos']  ?? '';
-    $aineet = $_POST['aineet'] ?? '';
-    $kuvaus = $_POST['kuvaus'] ?? '';
+    $kuvapolku  = $_POST['kuvapolku']  ?? '';
+    $altteksti = $_POST['altteksti'] ?? '';
     $akt    = isset($_POST['aktiivinen']) ? 1 : 0;
 
     if ($id <= 0) {
         $virhe = 'ID on pakollinen.';
-    } elseif ($kat <= 0 || $annos === '' || $aineet === '' || $kuvaus === '') {
+    } elseif ($kat <= 0 || $kuvapolku === '' || $altteksti === '') {
         $virhe = 'Täytä kaikki kentät.';
     } else {
         // Päättele: päivitys jos rivi löytyy annetulla ID:llä, muuten lisäys
-        $exists = mysqli_query($yhteys, "SELECT 1 FROM menu_items WHERE id=$id");
+        $exists = mysqli_query($yhteys, "SELECT 1 FROM kuvat WHERE id=$id");
         if ($exists && mysqli_fetch_row($exists)) {
             mysqli_query($yhteys,
-                "UPDATE menu_items SET 
-                    kategoria_id=$kat, annos='$annos', aineet='$aineet', kuvaus='$kuvaus', aktiivinen=$akt
+                "UPDATE kuvat SET 
+                    kategoria_id=$kat, kuvapolku='$kuvapolku', altteksti='$altteksti', aktiivinen=$akt
                  WHERE id=$id");
             $info = 'Päivitetty.';
         } else {
             mysqli_query($yhteys,
-                "INSERT INTO menu_items (id, kategoria_id, annos, aineet, kuvaus, aktiivinen)
-                 VALUES ($id, $kat, '$annos', '$aineet', '$kuvaus', $akt)");
+                "INSERT INTO kuvat (id, kategoria_id, kuvapolku, altteksti, aktiivinen)
+                 VALUES ($id, $kat, '$kuvapolku', '$altteksti', $akt)");
             $info = 'Lisätty.';
         }
-        header('Location: crudlomake.php'); exit;
+        header('Location: kuvaCrud2.php'); exit;
     }
 }
 
-$lista = mysqli_query($yhteys, 'SELECT * FROM menu_items ORDER BY id DESC');
+$lista = mysqli_query($yhteys, 'SELECT * FROM kuvat ORDER BY id DESC');
 ?>
 <!DOCTYPE html>
 <html lang="fi">
 <head>
 <meta charset="UTF-8">
-<title>Menun hallinta</title>
+<title>Kuvien hallinta</title>
 <style>
   .btn-blue,
   .btn-blue:link,
@@ -115,8 +115,7 @@ function tyhjennaLomake(){
 
 </head>
 <body>
-<h2>Menun hallinta</h2>
-<p><a href="luemenu.html">Avaa JSON‑lista</a></p>
+<h2>Kuvien hallinta</h2>
 
 <?php 
 if ($virhe !== ''): 
@@ -130,16 +129,15 @@ elseif ($info !== ''):
 endif; 
 ?>
 
-<form method="post" action="crudlomake.php" id="crudForm">
+<form method="post" action="kuvaCrud2.php" id="crudForm">
   ID (pakollinen): <input required type="number" name="id" min="1" value="<?= $edit ? $edit['id'] : '' ?>"><br><br>
   Ateria:<select name="kategoria_id">
     <option value="1" <?= ($edit && $edit['kategoria_id']==1)?'selected':'' ?>>Alkupala</option>
     <option value="2" <?= ($edit && $edit['kategoria_id']==2)?'selected':'' ?>>Pääruoka</option>
     <option value="3" <?= ($edit && $edit['kategoria_id']==3)?'selected':'' ?>>Jälkiruoka</option>
   </select><br><br>
-  Annos:  <input type="text" name="annos"  value="<?= $edit['annos']  ?? '' ?>"><br><br>
-  Aineet: <input type="text" name="aineet" value="<?= $edit['aineet'] ?? '' ?>"><br><br>
-  Kuvaus: <input type="text" name="kuvaus" value="<?= $edit['kuvaus'] ?? '' ?>"><br><br>
+  Kuvapolku:  <input type="text" name="kuvapolku"  value="<?= $edit['kuvapolku']  ?? '' ?>"><br><br>
+  Aineet: <input type="text" name="altteksti" value="<?= $edit['altteksti'] ?? '' ?>"><br><br>
   Aktiivinen: <input type="checkbox" name="aktiivinen" <?= ($edit && $edit['aktiivinen']==1)?'checked':'' ?>><br><br>
 
   <button type="submit" name="action" value="save">Tallenna</button>
@@ -154,9 +152,8 @@ endif;
     <th>#</th>
     <th>id</th>
     <th>Ateria</th>
-    <th>Annos</th>
-    <th>Aineet</th>
-    <th>Kuvaus</th>
+    <th>Kuvapolku</th>
+    <th>Altteksti</th>
     <th>Tila</th>
     <th>Toiminnot</th>
   </tr>
@@ -169,14 +166,13 @@ endif;
         elseif ($r['kategoria_id']==2) echo 'Pääruoka';
         else echo 'Jälkiruoka';
     ?></td>
-    <td><?= $r['annos'] ?></td>
-    <td><?= $r['aineet'] ?></td>
-    <td><?= $r['kuvaus'] ?></td>
+    <td><?= $r['kuvapolku'] ?></td>
+    <td><?= $r['altteksti'] ?></td>
     <td><?= ($r['aktiivinen']==1)?'aktiivinen':'ei aktiivinen' ?></td>
     <td>
       <span class="btn-group">
-        <a href="crudlomake.php?edit=<?= $r['id'] ?>" class="btn-blue">Muokkaa</a>
-        <a href="crudlomake.php?delete=<?= $r['id'] ?>" class="btn-blue" onclick="return confirm('Poistetaanko?');">Poista</a>
+        <a href="kuvaCrud2.php?edit=<?= $r['id'] ?>" class="btn-blue">Muokkaa</a>
+        <a href="kuvaCrud2.php?delete=<?= $r['id'] ?>" class="btn-blue" onclick="return confirm('Poistetaanko?');">Poista</a>
       </span>
     </td>
   </tr>
