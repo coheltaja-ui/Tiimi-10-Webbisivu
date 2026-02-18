@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>plantti kirjautuminen</title>
+<!-- http://localhost:81/Lopullinen/kirjauduajax.html-->
+ <style>
+  body {background-color: #d8d6de;
+	font-family: open-sans;
+	 background-image: url('login1.jpg');
+    background-size: cover;
+	
+  }
+  .laatikko {
+        background: #FFFDF7;
+        padding: 40px 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        width: 340px;
+        text-align: left;
+    }
+	.laatikko .content {
+    padding-left: 80px;
+  }
+
+ </style>
+</head>
+<body>
+<script>
+function lahetaKayttaja(lomake){
+	var user=new Object();
+	user.tunnus=lomake.tunnus.value;
+	user.salasana=lomake.salasana.value;
+	var jsonUser=JSON.stringify(user);
+	
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+		    if (this.responseText.trim() === "ok"){
+		    	window.location.assign("./luemenu.php");
+		    }
+		    else{
+			    document.getElementById("result").innerHTML = this.responseText;
+		    }
+	  }
+	};
+	xmlhttp.open("POST", "./kirjauduajax.php", true);
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp.send("user=" + jsonUser);	
+}
+</script>
+<div class="laatikko">
+	 <div class="content">
+<h2>Kirjautuminen</h2>
+<form id='userlomake'>
+ <input type='text' name='tunnus' value='' placeholder='Käyttäjätunnus..'><br>
+ <input type='password' name='salasana' value='' placeholder='Salasana..'><br>
+<input type='button' name='ok' value='Kirjaudu' onclick='lahetaKayttaja(this.form);'><br>
+</form>
+<p id='result'>
+</p>
+</div>
+</div>
+
+</body>
+</html>

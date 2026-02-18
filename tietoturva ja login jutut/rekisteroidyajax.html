@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<!-- http://localhost:81/Lopullinen/rekisteroidyajax.html-->
+</head>
+<body>
+<script>
+function lahetaKayttaja(lomake){
+	var user=new Object();
+	user.tunnus=lomake.tunnus.value;
+	user.salasana=lomake.salasana.value;
+	var jsonUser=JSON.stringify(user);
+	
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+		    document.getElementById("result").innerHTML = this.responseText;
+	  }
+	};
+	xmlhttp.open("POST", "./rekisteroidyajax.php", true);
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp.send("user=" + jsonUser);	
+}
+</script>
+
+<h2>Fill in!</h2>
+<form id='userlomake'>
+Laji: <input type='text' name='tunnus' value='' placeholder='Käyttäjätunnus...'><br>
+Paino: <input type='text' name='salasana' value='' placeholder='Salasana...'><br>
+<input type='button' name='ok' value='Lähetä' onclick='lahetaKayttaja(this.form);'><br>
+</form>
+<p id='result'>
+Palaute tähän
+</p>
+
+</body>
+</html>
