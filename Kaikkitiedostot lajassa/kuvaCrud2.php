@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['kayttaja'])) {
-    header('Location: login.php');
+    header('Location: kirjauduajax.html');
     exit;
 }
 
