@@ -5,8 +5,6 @@ if (!isset($_SESSION['kayttaja'])) {
     exit;
 }
 
-$initials = parse_ini_file("./.ht.asetukset.ini");
-
 try{
     $initials=parse_ini_file("./.ht.asetukset.ini");
     $yhteys=mysqli_connect($initials["databaseserver"], $initials["username"], $initials["password"], $initials["database"]);

@@ -71,7 +71,7 @@
                         groupedData[catId].push(item);
                     });
 
-                    const vastaus = await fetch('./kuvaJutut/kuvalueaktiiviset.php'); 
+                    const vastaus = await fetch('./kuvalueaktiiviset.php'); 
                     const kuvadata = await vastaus.json();
 
                     //ryhmittelee datan kategorian mukaan (int 1-3 alkupala, pääruoka, jälkiruoka)

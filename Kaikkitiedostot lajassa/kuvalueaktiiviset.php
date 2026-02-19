@@ -1,7 +1,6 @@
 <?php
-$initials = parse_ini_file("../.ht.asetukset.ini");
 try{
-      $initials=parse_ini_file("../.ht.asetukset.ini");
+      $initials=parse_ini_file("./.ht.asetukset.ini");
     $yhteys=mysqli_connect($initials["databaseserver"], $initials["username"], $initials["password"], $initials["database"]);
     mysqli_set_charset($yhteys, "utf8mb4");
 }

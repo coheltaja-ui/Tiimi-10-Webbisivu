@@ -42,6 +42,8 @@
             Olet kirjautuneena: <b><?php print htmlspecialchars($_SESSION["kayttaja"]); ?></b>
              </span>
              <a href="kayttajienprinttaus.php">Näytä käyttäjät</a>
+             <a href="crudlomake.php">Ruokalistan hallinta</a>
+             <a href="kuvaCrud2.php">Kuvien hallinta</a>
         <?php 
         endif
          ?>
