@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menu</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="tyyli.css">
+</head>
+<body>
+        <div class="ruokalistakuva">
+            <div class="container-fluid">
+                <header class="row">
+                    <nav class="col-md-12 navbar navbar-expand-lg bg-body-tertiary navbar-dark">
+                        <div class="logocontainer d-flex flex-column align-items-center">
+                            <a class="navbar-logo" href="index.html">
+                            <img src="kuvat/planttilogo.jpg" alt="Plantti logo" height="150">
+                            </a>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                <a class="nav-link" href="menu.html">Menu</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="yhteystiedot.html">Yhteystiedot</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="varaukset.html">Varaukset</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="svenska.html">På Svenska</a>
+                                </li>
+                            </ul>
+                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+                        </div>
+                    </nav>
+                </header>
+                <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="ruokalista-iso-otsikko">Menu</h1>
+                </div>
+            </div>
+            </div>  
+        </div>
+    </div>
+    <div class="container p-5">
+        <div id="menu-container">Jos näkyy ei toimi</div>
+        <script>
+            async function lataaMenu() {
+                    //hakee jsonin phpstä
+                    const response = await fetch('./jsonlueaktiiviset.php'); 
+                    const data = await response.json();
+
+                    //ryhmittelee datan kategorian mukaan (int 1-3 alkupala, pääruoka, jälkiruoka)
+                    const groupedData = {};
+                    
+                    data.forEach(item => {
+                        const catId = item.kategoria_id;
+                        if (!groupedData[catId]) {
+                            groupedData[catId] = [];
+                        }
+                        groupedData[catId].push(item);
+                    });
+
+                    const vastaus = await fetch('./kuvaJutut/kuvalueaktiiviset.php'); 
+                    const kuvadata = await vastaus.json();
+
+                    //ryhmittelee datan kategorian mukaan (int 1-3 alkupala, pääruoka, jälkiruoka)
+                    const groupedkuvaData = {};
+                    
+                    kuvadata.forEach(item => {
+                        const kuvaId = item.kategoria_id;
+                        if (!groupedkuvaData[kuvaId]) {
+                            groupedkuvaData[kuvaId] = [];
+                        }
+                        groupedkuvaData[kuvaId].push(item);
+                    });
+
+
+                    // generoi html sivun miinus headeri ja footeri jotka erikseen
+                    const container = document.getElementById('menu-container');
+                    container.innerHTML = ``;
+
+                    //looppaa categorioiden läpi
+                    for (const catId in groupedData) {
+                        const items = groupedData[catId];
+                        const kuvat = groupedkuvaData[catId];
+                        //luo otsikon kategorian mukaan
+                        
+                        let html = `<div class="row justify-content-center">`;
+                        //html += `<div class="category-group">`;
+
+                        
+                            //vaihtaa kuvan puolta kategorian mukaan
+                        if (catId == 2) {
+                        html += `<div class="col-lg-6 my-auto">`
+                        if(kuvat && kuvat[0]){html+=`<img class="img-fluid d-none d-lg-block" src="${kuvat[0].kuvapolku}" alt="${kuvat[0].altteksti}">`
+                        }
+                        else{
+                            html += `<img class="img-fluid d-none d-lg-block" src="kuvat/menukuva${catId}.jpg" alt="Herkullinen kuva alkupaloista">`
+                        }
+                        html += `</div>`
+                        }
+                        //printtaa annokset
+                        html+=`<div class="col-lg-6 my-auto ruokalistateksti">`;
+                        if(catId == 1){
+                            html += `<h2 class="category-title"> Alkupalat</h2>`
+                        }
+                        if(catId == 2){
+                            html += `<h2 class="category-title"> Pääruoat</h2>`
+                        }
+                        if(catId == 3){
+                            html += `<h2 class="category-title"> Jälkiruoat</h2>`
+                        }
+                        items.forEach(dish => {
+                            html += `
+                                <ul class="ruokalistat">
+                                    <li class="ruokalistaotsikko"><p>${dish.annos}</p></li>
+                                    <li><p>${dish.aineet}</p></li>
+                                    <li><p class="ruokalistavinossa">${dish.kuvaus}</p></li>
+                                </ul>
+                            `;
+                        });
+                        if (catId == 1 || catId == 3) {
+                        html += `</div>`
+                        html += `<div class="col-lg-6 my-auto">`
+                        if(kuvat && kuvat[0]){html+=`<img class="img-fluid d-none d-lg-block" src="${kuvat[0].kuvapolku}" alt="${kuvat[0].altteksti}">`
+                        }
+                        else{
+                            html += `<img class="img-fluid d-none d-lg-block" src="kuvat/menukuva${catId}.jpg" alt="Herkullinen kuva alkupaloista">`
+                        }
+                        html += `</div>`
+                        }
+                        html += `</div></div></div>`;
+                        container.innerHTML += html;
+                    }
+
+                } 
+            lataaMenu();
+        </script>
+    </div>
+    <footer class="bg-body-tertiary text-center mt-5">
+        <div class="container-fluid p-4">
+            <div class="row">
+                <div class="col-lg-3">
+                    <a class="footer-logo d-flex flex-column align-items-center" href="index.html">
+                        <img src="kuvat/planttilogo.jpg" alt="Plantti logo" height="150">
+                    </a>
+                </div>
+                <div class="col-lg-3 mt-4">
+                    <a class="btn" href="https://www.instagram.com/">
+                        <img src="kuvat/instagram.svg" alt="instagram logo" height="40">
+                    </a> 
+                    <a class="btn footer-some" href="https://www.facebook.com/">
+                        <img src="kuvat/facebook.svg" alt="facebook logo" height="40">
+                    </a> 
+                </div>
+                <div class="col-lg-3 mt-4">
+                    <ul class="list-unstyled">
+                    <li><a href="tel:+358442374825" class="footer-teksti-1">+358 44 2374825</a></li>
+                    <li><a href="mailto:plantti@planttiravintola.fi" class="footer-teksti-1">Plantti@planttiravintola.fi</a></li>
+                    <li style="margin-bottom:25px;"></li>
+                    <li class="footer-teksti-1">Sibeliuksenkatu 1</li>
+                    <li class="footer-teksti-1">13100, Hämeenlinna</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mt-4">
+                    <ul class="list-unstyled mb-0">
+                    <li><a href="#" class="footer-teksti-2">Evästekäytäntö</a></li>
+                    <li><a href="#" class="footer-teksti-2">Tietosuojaseloste</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

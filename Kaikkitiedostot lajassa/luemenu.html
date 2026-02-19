@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='fi'>
+   <!-- http://localhost:81/Lopullinen/luemenu.html-->
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Menu</title>
+</head>
+<body>
+    <h1>Ruokalista</h1>
+    <div id="menu"></div>
+<script>
+fetch("./jsonluemenu.php")
+    .then(response => response.json())
+    .then(data => {
+
+        let output = "";
+
+        data.forEach(item => {
+
+            output += `
+                <div>
+                    <h3>${item.annos}</h3>
+                    <p>ID:  ${item.id}</p>
+                    <p>Ainesosat:  ${item.aineet}</p>
+                    <p>Kuvaus:  ${item.kuvaus}</p>
+                    <p>Aktiivisuus:  ${item.aktiivinen}</p>
+                    <hr>
+                </div>
+            `;
+        });
+
+        document.getElementById("menu").innerHTML = output;
+    })
+    .catch(error => {
+        console.error("Virhe tapahtui", error);
+    });
+</script>
+
+
+</body>
+</html>
