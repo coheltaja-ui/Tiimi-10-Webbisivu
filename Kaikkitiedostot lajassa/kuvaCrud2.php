@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['kayttaja'])) {
+    header('Location: login.php');
+    exit;
+}
 
 $initials = parse_ini_file("./.ht.asetukset.ini");
 
@@ -115,6 +120,7 @@ function tyhjennaLomake(){
 
 </head>
 <body>
+<?php include 'header.php'; ?>
 <h2>Kuvien hallinta</h2>
 
 <?php 

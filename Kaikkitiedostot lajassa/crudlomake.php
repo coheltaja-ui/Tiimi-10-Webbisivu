@@ -1,9 +1,9 @@
-<?php if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-} ?>
 <?php
-
-$initials = parse_ini_file("./.ht.asetukset.ini");
+session_start();
+if (!isset($_SESSION['kayttaja'])) {
+    header('Location: login.php');
+    exit;
+}
 
 try{
     $initials=parse_ini_file("./.ht.asetukset.ini");
