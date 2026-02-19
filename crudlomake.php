@@ -116,7 +116,6 @@ function tyhjennaLomake(){
 </head>
 <body>
 <h2>Menun hallinta</h2>
-<p><a href="luemenu.html">Avaa JSON‑lista</a></p>
 
 <?php 
 if ($virhe !== ''): 
