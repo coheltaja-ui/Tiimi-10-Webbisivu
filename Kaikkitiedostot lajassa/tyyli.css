@@ -1,0 +1,267 @@
+body {
+  background-color: #222629;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow-x: hidden;
+}
+.bg-body-tertiary {
+    background-color: rgba(47, 44, 44, 0.4) !important;
+      text-align: center;
+        padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+.navbar-nav {
+  margin: 0 auto;
+
+}
+.navbar-nav .nav-item {
+  padding: 0% 2.5rem;
+  font-size: 32px;
+  font-weight: 400;
+  font-family: open-sans;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+.navbar .nav-link {
+  color: #FFFDF7;
+}
+.logo-teksti {
+  margin-left: 20%;
+  letter-spacing: 0.15em;
+  font-size: 36px;
+    color: #86C232
+}
+.navbar-logo {
+margin-left: 15%;
+
+}
+.ylin-kuva {
+  min-height: 100vh;
+  background-image: url("kuvat/ravintola2.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.logo-container{
+margin-left: 2%;
+}
+.sisalto-tesksti{
+  padding-left: 35%;
+  font-size: 24px;
+  text-align: left;    
+  color: #FFFDF7;
+  font-family: open-sans;
+   -webkit-text-stroke: 0.12px #000;
+}
+.sotsikko{
+  font-size: 32px;
+   padding-left: 35%;
+   text-align: left;
+  color: #FFFDF7;
+  font-family: open-sans;
+     -webkit-text-stroke: 0.12px #000;
+}
+.tekstilaatikko{
+  padding-left: 18%;
+padding-top: 7rem; 
+
+}
+.tekstilaatikko2{
+  padding-right: 10%;
+padding-top: 7rem;
+
+}
+.tekstiboxi{ 
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+  .safkaa{
+    width: 80%;
+    display: block; 
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  }
+  .annos-teksti{
+    text-align: center;
+    font-size: 24px;
+    color: #86C232}
+@media (max-width: 768px) {
+  .tekstilaatikko {
+    padding-left: 1%;
+    padding-right:1%;
+  }
+}
+@media (max-width: 768px) {
+  .tekstilaatikko2 {
+    padding-left: 1%;
+    padding-right:1%;
+  }
+}
+
+.navbar-logo{
+padding-left: 2%;
+}
+.footer-teksti-1{
+  color: #86C232
+}
+.footer-teksti-2{
+  color: #FFFDF7;
+}
+.ruokalistat{
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+.ruokalistateksti{
+  color:#FFFDF7;
+  font-weight: 200;
+  font-family: open-sans;
+}
+.ruokalistateksti h2{
+  font-family: Brush Script MT;
+  font-size:  50px;
+}
+.ruokalistavinossa{
+  font-style:italic;
+}
+.ruokalistaotsikko{
+  font-weight:bold;
+  font-size: large;
+}
+.ruokalista-iso-otsikko{
+  padding-top: 100px;
+  margin-bottom: 50px;
+  text-shadow:2px 2px 4px #222629;
+  color: #FFFDF7;
+  font-family: Brush Script MT;
+  font-size: 100px;
+}
+.ruokalistakuva {
+  min-height: 50vh;
+  background-image: url("kuvat/menutausta.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.artikkeli-teksti {
+  color:#86C232;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 24vh;
+  margin-left: 25%;
+}
+
+.artikkeli-teksti h2 {
+  color:#86C232;
+  font-size: 46px;
+  font-family: open-sans;
+  margin-bottom: 60px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.artikkeli-teksti pre {
+  font-family: open-sans;
+}
+
+@media (max-width: 768px) {
+  .artikkeli-teksti {
+    width: calc(100% - 10%);
+    margin-left: 5%;
+    margin-top: 32vh;
+    font-size: 24px;
+  }
+  
+  .artikkeli-teksti h2 {
+    font-size: 36px;
+    margin-bottom: 25px;
+  }
+  
+  .artikkeli-teksti pre {
+    margin: 5px;
+  }
+}
+
+.etusivu-taustakuva {
+  background-image: url(kuvat/planttietusivubackground2.png);
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  min-height: 65vh;
+}
+ 
+.ravintolakuva {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ravintolakuva img{
+  display: block;
+  margin: auto;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  max-width: 90%;
+  height: auto;
+}
+
+.ravintola-teksti{
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ravintola-teksti p{
+  color: #FFFDF7;
+  font-size: 28px;
+  font-family: open-sans;
+  text-align: left;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.ravintola-teksti h1 {
+  color: #FFFDF7;
+  font-size: 60px;
+  font-family: Brush Script MT;
+  text-align: center;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
+}  
+.kirjoita{
+  margin-top: 1rem;
+  max-width: 600px; 
+  width: 100%;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
+} 
+.navbar-toggler {
+  margin-right: 10%; 
+}
+.kirjoita .form-label {
+font-family: open-sans;
+color: #FFFDF7;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}
+.linkki:hover{
+  color: #FFFDF7;
+}
+.navbar-toggler {
+  margin-right: 4rem;
+}
+
+.kirjoita h1 {
+  color: #FFFDF7;
+  font-family: open-sans;
+  font-size: 48px;
+  padding-bottom: 2rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.varaus-kuva {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-top: 2rem;
+}
