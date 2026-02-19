@@ -35,6 +35,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'edit') {
         $virhe = 'Anna muokattava ID.';
     }
 }
+
 // Muokkaus esitäyttö myös GET:llä listasta
 if (!$edit && isset($_GET['edit'])) {
     $eid = (int)$_GET['edit'];
