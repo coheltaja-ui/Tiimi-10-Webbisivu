@@ -15,73 +15,75 @@ catch(Exception $e){
     exit;
 }
 
-$virhe = '';
-$info  = '';
+// POISTO
+if (isset($_GET['delete']) && ctype_digit($_GET['delete'])) {
+    $id = (int)$_GET['delete'];
 
-if (isset($_GET['delete'])) {
-    $del_id = (int)$_GET['delete'];
-    if ($del_id > 0) {
-        mysqli_query($yhteys, "DELETE FROM menu_items WHERE id = $del_id");
-    }
-    header('Location: crudlomake.php'); exit;
+    $stmt = mysqli_prepare($yhteys, "DELETE FROM menu_items WHERE id=?");
+    mysqli_stmt_bind_param($stmt, 'i', $id);
+    mysqli_stmt_execute($stmt);
+
+    header("Location: crudlomake.php");
+    exit;
 }
 
-// MUOKKAA
+// MUOKKAUS
 $edit = null;
-if (isset($_POST['action']) && $_POST['action'] === 'edit') {
-    $eid = (int)($_POST['id'] ?? 0);
-    if ($eid > 0) {
-        $res = mysqli_query($yhteys, "SELECT * FROM menu_items WHERE id=$eid");
-        $edit = mysqli_fetch_assoc($res);
-        if (!$edit) { $virhe = 'Annettua ID:tä ei löytynyt.'; }
+
+if (isset($_GET['edit']) && ctype_digit($_GET['edit'])) {
+    $id = (int)$_GET['edit'];
+    $stmt = mysqli_prepare($yhteys, "SELECT * FROM menu_items WHERE id=?");
+    mysqli_stmt_bind_param($stmt, 'i', $id);
+    mysqli_stmt_execute($stmt);
+    $tulos = mysqli_stmt_get_result($stmt);
+    $edit = mysqli_fetch_assoc($tulos);
+}
+
+// TALLENNUS
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id           = $_POST['id'];
+    $kategoria_id = $_POST['kategoria_id'];
+    $annos        = $_POST['annos'];
+    $aineet       = $_POST['aineet'];
+    $kuvaus       = $_POST['kuvaus'];
+    $aktiivinen   = isset($_POST['aktiivinen']) ? 1 : 0;
+
+    if (!ctype_digit($id) || !ctype_digit($kategoria_id)) {
+        header("Location: crudlomake.php");
+        exit;
+    }
+
+    $id_i  = (int)$id;
+    $kat_i = (int)$kategoria_id;
+
+    $stmt = mysqli_prepare($yhteys, "SELECT 1 FROM menu_items WHERE id=?");
+    mysqli_stmt_bind_param($stmt, 'i', $id_i);
+    mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_get_result($stmt);
+
+    if (mysqli_fetch_row($res)) {
+        $stmt = mysqli_prepare($yhteys,
+            "UPDATE menu_items
+             SET kategoria_id=?, annos=?, aineet=?, kuvaus=?, aktiivinen=?
+             WHERE id=?");
+        mysqli_stmt_bind_param($stmt, 'isssii', $kat_i, $annos, $aineet, $kuvaus, $aktiivinen, $id_i);
+        mysqli_stmt_execute($stmt);
+
     } else {
-        $virhe = 'Anna muokattava ID.';
+        $stmt = mysqli_prepare($yhteys,
+            "INSERT INTO menu_items
+             (id, kategoria_id, annos, aineet, kuvaus, aktiivinen)
+             VALUES (?, ?, ?, ?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, 'iisssi', $id_i, $kat_i, $annos, $aineet, $kuvaus, $aktiivinen);
+        mysqli_stmt_execute($stmt);
     }
-}
-// Muokkaus esitäyttö myös GET:llä listasta
-if (!$edit && isset($_GET['edit'])) {
-    $eid = (int)$_GET['edit'];
-    if ($eid>0) {
-        $res = mysqli_query($yhteys, "SELECT * FROM menu_items WHERE id=$eid");
-        $edit = mysqli_fetch_assoc($res);
-        if (!$edit) { $virhe = 'Annettua ID:tä ei löytynyt.'; }
-    }
+    header("Location: crudlomake.php");
+    exit;
 }
 
-// TALLENNA
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && ( !isset($_POST['action']) || $_POST['action'] === 'save')) {
-    $id     = (int)($_POST['id'] ?? 0);
-    $kat    = (int)($_POST['kategoria_id'] ?? 0);
-    $annos  = $_POST['annos']  ?? '';
-    $aineet = $_POST['aineet'] ?? '';
-    $kuvaus = $_POST['kuvaus'] ?? '';
-    $akt    = isset($_POST['aktiivinen']) ? 1 : 0;
-
-    if ($id <= 0) {
-        $virhe = 'ID on pakollinen.';
-    } elseif ($kat <= 0 || $annos === '' || $aineet === '' || $kuvaus === '') {
-        $virhe = 'Täytä kaikki kentät.';
-    } else {
-        // Päättele: päivitys jos rivi löytyy annetulla ID:llä, muuten lisäys
-        $exists = mysqli_query($yhteys, "SELECT 1 FROM menu_items WHERE id=$id");
-        if ($exists && mysqli_fetch_row($exists)) {
-            mysqli_query($yhteys,
-                "UPDATE menu_items SET 
-                    kategoria_id=$kat, annos='$annos', aineet='$aineet', kuvaus='$kuvaus', aktiivinen=$akt
-                 WHERE id=$id");
-            $info = 'Päivitetty.';
-        } else {
-            mysqli_query($yhteys,
-                "INSERT INTO menu_items (id, kategoria_id, annos, aineet, kuvaus, aktiivinen)
-                 VALUES ($id, $kat, '$annos', '$aineet', '$kuvaus', $akt)");
-            $info = 'Lisätty.';
-        }
-        header('Location: crudlomake.php'); exit;
-    }
-}
-
-$lista = mysqli_query($yhteys, 'SELECT * FROM menu_items ORDER BY id DESC');
+$lista = mysqli_query($yhteys, "SELECT * FROM menu_items ORDER BY id DESC");
 ?>
+
 <!DOCTYPE html>
 <html lang="fi">
 <head>
@@ -120,18 +122,6 @@ function tyhjennaLomake(){
 <body>
 <?php include 'header.php'; ?>
 <h2>Menun hallinta</h2>
-
-<?php 
-if ($virhe !== ''): 
-?>
-  <p style="color:red;"><?= $virhe ?></p>
-<?php 
-elseif ($info !== ''): 
-?>
-  <p style="color:green;"><?= $info ?></p>
-<?php 
-endif; 
-?>
 
 <form method="post" action="crudlomake.php" id="crudForm">
   ID (pakollinen): <input required type="number" name="id" min="1" value="<?= $edit ? $edit['id'] : '' ?>"><br><br>
@@ -185,6 +175,5 @@ endif;
   </tr>
   <?php endwhile; ?>
 </table>
-
 </body>
 </html>
